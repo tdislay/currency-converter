@@ -12,12 +12,10 @@ export class ExchangeRatesCache {
   /**
    * Keys format: EUR/USD
    */
-  private exchangeRates: Map<string, ExchangeRate>;
-  private lastUpdate: Date;
+  private exchangeRates: Map<string, ExchangeRate> = new Map();
+  private lastUpdate: Date = new Date(0); // 1970-01-01
 
-  constructor(private readonly exchangeRatesApi: ExchangeRatesApi) {
-    this.flushCache();
-  }
+  constructor(private readonly exchangeRatesApi: ExchangeRatesApi) {}
 
   /**
    * @returns Exchange Rates with format: EUR/USD
@@ -26,11 +24,6 @@ export class ExchangeRatesCache {
     await this.updateExchangeRatesIfOldData();
 
     return [...this.exchangeRates.keys()];
-  }
-
-  flushCache(): void {
-    this.exchangeRates = new Map();
-    this.lastUpdate = new Date(0); // 1970-01-01
   }
 
   private async updateExchangeRatesIfOldData(): Promise<void> {
