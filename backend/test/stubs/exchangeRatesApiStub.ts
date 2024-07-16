@@ -1,5 +1,5 @@
-import { ExchangeRatesApi } from "../adapters/exchangeRatesApi";
-import { ExchangeRate } from "../types";
+import { ExchangeRatesApi } from "src/modules/exchangeRates/adapters/exchangeRatesApi";
+import { ExchangeRate } from "src/modules/exchangeRates/types";
 
 export class ExchangeRatesApiStub extends ExchangeRatesApi {
   async getExchangeRates(): Promise<Map<string, ExchangeRate>> {

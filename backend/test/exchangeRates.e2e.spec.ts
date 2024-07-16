@@ -1,13 +1,13 @@
 import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import { agent } from "supertest";
-import { ExchangeRatesApi } from "../adapters/exchangeRatesApi";
-import { ExchangeRatesCache } from "../adapters/exchangeRatesCache";
-import { ExchangeRatesApiStub } from "./exchangeRatesApiStub";
+import { ExchangeRatesApi } from "../src/modules/exchangeRates/adapters/exchangeRatesApi";
+import { ExchangeRatesCache } from "../src/modules/exchangeRates/adapters/exchangeRatesCache";
+import { ExchangeRatesApiStub } from "./stubs/exchangeRatesApiStub";
 import { AppModule } from "src/app.module";
 import { config, loadConfig } from "src/config";
 
-describe("Exchange Rates", () => {
+describe("Exchange Rates (E2E)", () => {
   let app: INestApplication;
 
   beforeAll(async () => {
