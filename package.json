@@ -1,0 +1,16 @@
+{
+  "name": "exchange-converter",
+  "version": "1.0.0",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "packageManager": "npm@10.0.0",
+  "scripts": {
+    "dev": "turbo run dev"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^2.0.3"
+  }
+}
