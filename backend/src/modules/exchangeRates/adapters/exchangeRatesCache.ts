@@ -26,6 +26,18 @@ export class ExchangeRatesCache {
     return [...this.exchangeRates.keys()];
   }
 
+  async getExchangeRate(exchangeRateKey: string): Promise<ExchangeRate> {
+    await this.updateExchangeRatesIfOldData();
+
+    const exchangeRate = this.exchangeRates.get(exchangeRateKey);
+
+    if (exchangeRate == null) {
+      throw new Error(`Exchange "${exchangeRateKey}" not supported`);
+    }
+
+    return exchangeRate;
+  }
+
   private async updateExchangeRatesIfOldData(): Promise<void> {
     const TIME_ELAPSED_SINCE_LAST_REFRESH_IN_SECS =
       (Date.now() - this.lastUpdate.getTime()) / 1000;

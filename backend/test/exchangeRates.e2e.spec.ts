@@ -33,4 +33,18 @@ describe("Exchange Rates (E2E)", () => {
         .expect(200, ["EUR/USD", "USD/EUR", "GBP/USD", "USD/GBP"]);
     });
   });
+
+  describe("GET /exchange-rates/:from/:to", () => {
+    it("should return a 400 BAD REQUEST when the from currency is not available", async () => {
+      await agent(app.getHttpServer())
+        .get("/exchange-rates/ABC/DEF")
+        .expect(400);
+    });
+
+    it("should return the exchange rate", async () => {
+      await agent(app.getHttpServer())
+        .get("/exchange-rates/EUR/USD")
+        .expect(200, { value: 1.23, date: "2024-07-16 07:14:45" });
+    });
+  });
 });
