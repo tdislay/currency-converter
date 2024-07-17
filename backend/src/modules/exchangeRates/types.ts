@@ -1,4 +1,4 @@
-export type ExchangeRate = {
+export interface ExchangeRate {
   value: number;
-  date: string;
-};
+  date: Date;
+}

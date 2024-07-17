@@ -38,7 +38,7 @@ export class ExchangeRatesApi {
         .div(2);
       exchangeRates.set(item.ticker, {
         value: exchangeRate.toNumber(),
-        date: item.date,
+        date: new Date(item.date),
       });
     }
 

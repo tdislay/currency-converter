@@ -44,7 +44,7 @@ describe("Exchange Rates (E2E)", () => {
     it("should return the exchange rate", async () => {
       await agent(app.getHttpServer())
         .get("/exchange-rates/EUR/USD")
-        .expect(200, { value: 1.23, date: "2024-07-16 07:14:45" });
+        .expect(200, { value: 1.23, date: "2024-07-16T05:14:45.000Z" });
     });
   });
 });

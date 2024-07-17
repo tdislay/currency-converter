@@ -51,9 +51,12 @@ describe("Exchange Rates Api", () => {
     const result = await exchangeRatesApi.getExchangeRates();
 
     expect(Object.fromEntries(result.entries())).toMatchObject({
-      "EUR/USD": { value: 1.089665, date: "2024-07-16 07:14:45" },
-      "USD/EUR": { value: 0.91755, date: "2024-07-16 07:14:45" },
-      "XDR/USD": { value: 1.32726, date: "2024-07-16 07:14:45" },
+      "EUR/USD": {
+        value: 1.089665,
+        date: new Date("2024-07-16T05:14:45.000Z"),
+      },
+      "USD/EUR": { value: 0.91755, date: new Date("2024-07-16T05:14:45.000Z") },
+      "XDR/USD": { value: 1.32726, date: new Date("2024-07-16T05:14:45.000Z") },
     });
   });
 });
