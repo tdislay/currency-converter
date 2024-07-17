@@ -2,6 +2,7 @@ import { BadRequestException, Controller, Get, Req, Res } from "@nestjs/common";
 import { Request, Response } from "express";
 import { ExchangeRatesService } from "./exchangeRates.service";
 import { ExchangeRate } from "./types";
+import { config } from "src/config";
 
 @Controller("exchange-rates")
 export class ExchangeRatesController {
@@ -13,10 +14,8 @@ export class ExchangeRatesController {
   ): Promise<string[]> {
     response.setHeader(
       "Cache-Control",
-      "no-store, no-cache, must-revalidate, max-age=0",
+      `max-age=${config.exchangeRatesRefreshIntervalInSecs}`,
     );
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
 
     return this.exchangeRatesService.availableExchangeRates();
   }
