@@ -59,7 +59,7 @@ export function CurrencyConverterCard() {
     try {
       return Big(baseAmount)
         .times(exchangeRate.value ?? 0)
-        .toPrecision(4);
+        .toFixed(4);
     } catch {
       return new Big(0);
     }
